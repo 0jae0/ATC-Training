@@ -21,6 +21,8 @@ window.configure(bg = "#FFFFFF")
 
 global Route, Callsign, Origin, FlightRule, Destination, Altitude, Alternate, Squawk, TempAltitude, AirCraftData
 
+client = 0
+
 # Callsign 정하기
 def letcallsign():
     icao = random.choice(['AAR', 'AAL', 'ABL', 'APZ', 'ASV', 'DAL', 'EOK', 'ESR', 'ETD', 'ETH', 'JJA', 'JNA', 'KAL', 'KLM', 'UAE', 'UPS'])
@@ -30,7 +32,8 @@ def letcallsign():
 # 버튼 클릭 시 함수들
 def ok():
     print("Ok")
-    Route = entry_1.get(); Callsign = entry_2.get(); Origin = entry_3.get(); FlightRule = entry_4.get(); Destination = entry_5.get(); Altitude = entry_6.get(); Alternate = entry_7.get(); Squawk = entry_8.get(); TempAltitude = entry_9.get(); AirCraftData = entry_10.get()
+    if client == 1:
+        Route = entry_1.get(); Callsign = entry_2.get(); Origin = entry_3.get(); FlightRule = entry_4.get(); Destination = entry_5.get(); Altitude = entry_6.get(); Alternate = entry_7.get(); Squawk = entry_8.get(); TempAltitude = entry_9.get(); AirCraftData = entry_10.get()
     print(Route, Callsign, Origin, FlightRule, Destination, Altitude, Alternate, Squawk, TempAltitude, AirCraftData)
 
 def cancel():
@@ -45,9 +48,6 @@ def TempAlt():
     print("Set Temp Alt")
     TempAltitude = entry_9.get()
     print(TempAltitude)
-
-# 처음 시작 시
-def letcallsign():
 
 canvas = Canvas(
     window,
@@ -75,6 +75,8 @@ image_1 = canvas.create_image(
     512.0,
     image=image_image_1
 )
+
+# OK CANCEL SETSQ SETTEMP 버튼
 
 button_image_1 = PhotoImage(
     file=relative_to_assets("button_1.png"))
@@ -140,6 +142,8 @@ button_4.place(
     height=41.0
 )
 
+# 루트나 이런거 지랄하는곳
+
 entry_image_1 = PhotoImage(
     file=relative_to_assets("entry_1.png"))
 entry_bg_1 = canvas.create_image(
@@ -152,8 +156,7 @@ entry_1 = Entry(
     bg="#F0F0F0",
     fg="#000716",
     highlightthickness=0,
-    font=("Arial", 18),
-    textvariable=v.get()
+    font=("Arial", 18)
 )
 entry_1.place(
     x=554.0,
@@ -342,8 +345,7 @@ entry_10 = Entry(
     bg="#F0F0F0",
     fg="#000716",
     highlightthickness=0,
-    font=("Arial", 18),
-    textvariable=v
+    font=("Arial", 18)
 )
 entry_10.place(
     x=1124.0,
@@ -351,6 +353,118 @@ entry_10.place(
     width=144.0,
     height=39.0
 )
+
+# 왼쪽 Flight Strip 부분
+
+button_image_5 = PhotoImage(
+    file=relative_to_assets("button_1.png"))
+button_5 = Button(
+    image=button_image_5,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_1 clicked"),
+    relief="flat"
+)
+button_5.place(
+    x=10.0,
+    y=10.0,
+    width=396.0,
+    height=100.0
+)
+button_image_6 = PhotoImage(
+    file=relative_to_assets("button_2.png"))
+button_6 = Button(
+    image=button_image_6,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_2 clicked"),
+    relief="flat"
+)
+button_6.place(
+    x=10.0,
+    y=120.0,
+    width=396.0,
+    height=100.0
+)
+button_image_7 = PhotoImage(
+    file=relative_to_assets("button_3.png"))
+button_7 = Button(
+    image=button_image_7,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_3 clicked"),
+    relief="flat"
+)
+button_7.place(
+    x=10.0,
+    y=230.0,
+    width=396.0,
+    height=100.0
+)
+button_image_8 = PhotoImage(
+    file=relative_to_assets("button_4.png"))
+button_8 = Button(
+    image=button_image_8,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_4 clicked"),
+    relief="flat"
+)
+button_8.place(
+    x=10.0,
+    y=340.0,
+    width=396.0,
+    height=100.0
+)
+button_image_9 = PhotoImage(
+    file=relative_to_assets("button_5.png"))
+button_9 = Button(
+    image=button_image_9,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_5 clicked"),
+    relief="flat"
+)
+button_9.place(
+    x=10.0,
+    y=450.0,
+    width=396.0,
+    height=100.0
+)
+button_image_10 = PhotoImage(
+    file=relative_to_assets("button_6.png"))
+button_10 = Button(
+    image=button_image_10,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_6 clicked"),
+    relief="flat"
+)
+button_10.place(
+    x=10.0,
+    y=560.0,
+    width=396.0,
+    height=100.0
+)
+button_image_11 = PhotoImage(
+    file=relative_to_assets("button_7.png"))
+button_11 = Button(
+    image=button_image_11,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_7 clicked"),
+    relief="flat"
+)
+button_11.place(
+    x=10.0,
+    y=670.0,
+    width=396.0,
+    height=100.0
+)
+
+# 처음 시작 시
+def start():
+    letcallsign()
 
 window.title("DELEVARY TRAINING")
 window.resizable(False, False)
