@@ -2,13 +2,14 @@
 # https://github.com/ParthJadhav/Tkinter-Designer
 
 from pathlib import Path
+import random
 
 # from tkinter import *
 # Explicit imports to satisfy Flake8
-from tkinter import StringVar, Tk, Canvas, Entry, Text, Button, PhotoImage
+from tkinter import *
 
 OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\rooid\OneDrive - 대구광역시교육청\code\ATC-Training\build\assets\frame0")
+ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\rooid\OneDrive - 대구광역시교육청\code\ATC-Training\git\ATC-Training\build\assets\frame0")
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
@@ -18,19 +19,35 @@ window = Tk()
 window.geometry("1440x865")
 window.configure(bg = "#FFFFFF")
 
+global Route, Callsign, Origin, FlightRule, Destination, Altitude, Alternate, Squawk, TempAltitude, AirCraftData
+
+# Callsign 정하기
+def letcallsign():
+    icao = random.choice(['AAR', 'AAL', 'ABL', 'APZ', 'ASV', 'DAL', 'EOK', 'ESR', 'ETD', 'ETH', 'JJA', 'JNA', 'KAL', 'KLM', 'UAE', 'UPS'])
+    numb = random.randrange(100, 8000)
+    print(icao + str(numb))
+
 # 버튼 클릭 시 함수들
 def ok():
     print("Ok")
-    print(entry_1.get())
+    Route = entry_1.get(); Callsign = entry_2.get(); Origin = entry_3.get(); FlightRule = entry_4.get(); Destination = entry_5.get(); Altitude = entry_6.get(); Alternate = entry_7.get(); Squawk = entry_8.get(); TempAltitude = entry_9.get(); AirCraftData = entry_10.get()
+    print(Route, Callsign, Origin, FlightRule, Destination, Altitude, Alternate, Squawk, TempAltitude, AirCraftData)
 
 def cancel():
     print("Cancel")
 
 def SetSQ():
-    print("Set Squawk")
+    print("Set Squawk but now reset")
+    entry_1.delete(0, 'end'); entry_2.delete(0, 'end'); entry_3.delete(0, 'end'); entry_4.delete(0, 'end'); entry_5.delete(0, 'end'); entry_6.delete(0, 'end'); entry_7.delete(0, 'end'); entry_8.delete(0, 'end'); entry_9.delete(0, 'end'); entry_10.delete(0, 'end')
+    entry_1.insert(0, "asd"); entry_2.insert(0, "asd"); entry_3.insert(0, "ads"); entry_4.insert(0, "asd"); entry_5.insert(0, ""); entry_6.insert(0, ""); entry_7.insert(0, ""); entry_8.insert(0, ""); entry_9.insert(0, ""); entry_10.insert(0, "")
 
 def TempAlt():
     print("Set Temp Alt")
+    TempAltitude = entry_9.get()
+    print(TempAltitude)
+
+# 처음 시작 시
+def letcallsign():
 
 canvas = Canvas(
     window,
@@ -122,9 +139,6 @@ button_4.place(
     width=144.0,
     height=41.0
 )
-
-v = StringVar()
-value = v.get()
 
 entry_image_1 = PhotoImage(
     file=relative_to_assets("entry_1.png"))
