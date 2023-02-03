@@ -14,27 +14,19 @@ ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\rooid\OneDrive - 대구광역시교�
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
+Client = 0
+global Route, Callsign, Origin, FlightRule, Destination, Altitude, Alternate, Squawk, TempAltitude, AirCraftData
+
 window = Tk()
 
 window.geometry("1440x865")
 window.configure(bg = "#FFFFFF")
 
-global Route, Callsign, Origin, FlightRule, Destination, Altitude, Alternate, Squawk, TempAltitude, AirCraftData
-
-client = 0
-
-# Callsign 정하기
-def letcallsign():
-    icao = random.choice(['AAR', 'AAL', 'ABL', 'APZ', 'ASV', 'DAL', 'EOK', 'ESR', 'ETD', 'ETH', 'JJA', 'JNA', 'KAL', 'KLM', 'UAE', 'UPS'])
-    numb = random.randrange(100, 8000)
-    print(icao + str(numb))
-
 # 버튼 클릭 시 함수들
 def ok():
     print("Ok")
-    if client == 1:
-        Route = entry_1.get(); Callsign = entry_2.get(); Origin = entry_3.get(); FlightRule = entry_4.get(); Destination = entry_5.get(); Altitude = entry_6.get(); Alternate = entry_7.get(); Squawk = entry_8.get(); TempAltitude = entry_9.get(); AirCraftData = entry_10.get()
-    print(Route, Callsign, Origin, FlightRule, Destination, Altitude, Alternate, Squawk, TempAltitude, AirCraftData)
+    # Route = entry_1.get(); Callsign = entry_2.get(); Origin = entry_3.get(); FlightRule = entry_4.get(); Destination = entry_5.get(); Altitude = entry_6.get(); Alternate = entry_7.get(); Squawk = entry_8.get(); TempAltitude = entry_9.get(); AirCraftData = entry_10.get()
+    # print(Route, Callsign, Origin, FlightRule, Destination, Altitude, Alternate, Squawk, TempAltitude, AirCraftData)
 
 def cancel():
     print("Cancel")
@@ -42,12 +34,54 @@ def cancel():
 def SetSQ():
     print("Set Squawk but now reset")
     entry_1.delete(0, 'end'); entry_2.delete(0, 'end'); entry_3.delete(0, 'end'); entry_4.delete(0, 'end'); entry_5.delete(0, 'end'); entry_6.delete(0, 'end'); entry_7.delete(0, 'end'); entry_8.delete(0, 'end'); entry_9.delete(0, 'end'); entry_10.delete(0, 'end')
-    entry_1.insert(0, "asd"); entry_2.insert(0, "asd"); entry_3.insert(0, "ads"); entry_4.insert(0, "asd"); entry_5.insert(0, ""); entry_6.insert(0, ""); entry_7.insert(0, ""); entry_8.insert(0, ""); entry_9.insert(0, ""); entry_10.insert(0, "")
 
 def TempAlt():
     print("Set Temp Alt")
     TempAltitude = entry_9.get()
     print(TempAltitude)
+
+# Flight strip 버튼 클릭 시 함수들
+def FS1():
+    Client = 1
+    print("Client 1")
+    button_12.config(text="현재 열린 플랜 콜사인: " + str(Client))
+    print(Client)
+
+def FS2():
+    Client = 2
+    print("Client 2")
+    button_12.config(text="현재 열린 플랜 콜사인: " + str(Client))
+    print(Client)
+
+def FS3():
+    Client = 3
+    print("Client 3")
+    button_12.config(text="현재 열린 플랜 콜사인: " + str(Client))
+    print(Client)
+
+def FS4():
+    Client = 4
+    print("Client 4")
+    button_12.config(text="현재 열린 플랜 콜사인: " + str(Client))
+    print(Client)
+
+def FS5():
+    Client = 5
+    print("Client 5")
+    button_12.config(text="현재 열린 플랜 콜사인: " + str(Client))
+    print(Client)
+
+def FS6():
+    Client = 6
+    print("Client 6")
+    button_12.config(text="현재 열린 플랜 콜사인: " + str(Client))
+    print(Client)
+
+def FS7():
+    Client = 7
+    print("Client 7")
+    button_12.config(text="현재 열린 플랜 콜사인: " + str(Client))
+    print(Client)
 
 canvas = Canvas(
     window,
@@ -65,7 +99,7 @@ canvas.create_rectangle(
     0.0,
     416.0,
     1024.0,
-    fill="#D9D9D9",
+    fill="#F5F5F5",
     outline="")
 
 image_image_1 = PhotoImage(
@@ -357,12 +391,12 @@ entry_10.place(
 # 왼쪽 Flight Strip 부분
 
 button_image_5 = PhotoImage(
-    file=relative_to_assets("button_1.png"))
+    file=relative_to_assets("button_5.png"))
 button_5 = Button(
     image=button_image_5,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_1 clicked"),
+    command=lambda: FS1(),
     relief="flat"
 )
 button_5.place(
@@ -372,12 +406,12 @@ button_5.place(
     height=100.0
 )
 button_image_6 = PhotoImage(
-    file=relative_to_assets("button_2.png"))
+    file=relative_to_assets("button_5.png"))
 button_6 = Button(
     image=button_image_6,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_2 clicked"),
+    command=lambda: FS2(),
     relief="flat"
 )
 button_6.place(
@@ -387,12 +421,12 @@ button_6.place(
     height=100.0
 )
 button_image_7 = PhotoImage(
-    file=relative_to_assets("button_3.png"))
+    file=relative_to_assets("button_5.png"))
 button_7 = Button(
     image=button_image_7,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_3 clicked"),
+    command=lambda: FS3(),
     relief="flat"
 )
 button_7.place(
@@ -402,12 +436,12 @@ button_7.place(
     height=100.0
 )
 button_image_8 = PhotoImage(
-    file=relative_to_assets("button_4.png"))
+    file=relative_to_assets("button_5.png"))
 button_8 = Button(
     image=button_image_8,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_4 clicked"),
+    command=lambda: FS4(),
     relief="flat"
 )
 button_8.place(
@@ -422,7 +456,7 @@ button_9 = Button(
     image=button_image_9,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_5 clicked"),
+    command=lambda: FS5(),
     relief="flat"
 )
 button_9.place(
@@ -432,12 +466,12 @@ button_9.place(
     height=100.0
 )
 button_image_10 = PhotoImage(
-    file=relative_to_assets("button_6.png"))
+    file=relative_to_assets("button_5.png"))
 button_10 = Button(
     image=button_image_10,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_6 clicked"),
+    command=lambda: FS6(),
     relief="flat"
 )
 button_10.place(
@@ -447,12 +481,12 @@ button_10.place(
     height=100.0
 )
 button_image_11 = PhotoImage(
-    file=relative_to_assets("button_7.png"))
+    file=relative_to_assets("button_5.png"))
 button_11 = Button(
     image=button_image_11,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_7 clicked"),
+    command=lambda: FS7(),
     relief="flat"
 )
 button_11.place(
@@ -462,10 +496,40 @@ button_11.place(
     height=100.0
 )
 
+# 현재 현황 보기
+
+button_12 = Button(
+    text = "현재 열린 플랜 콜사인 : " + str(Client),
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_1 clicked"),
+    relief="flat"
+)
+button_12.place(
+    x=40.0,
+    y=780.0,
+    width=336.0,
+    height=60.0
+)
+
 # 처음 시작 시
 def start():
-    letcallsign()
+    icao = random.choice(['AAR', 'AAL', 'ABL', 'APZ', 'ASV', 'DAL', 'EOK', 'ESR', 'ETD', 'ETH', 'JJA', 'JNA', 'KAL', 'KLM', 'UAE', 'UPS'])
+    numb = random.randrange(100, 8000)
+    onecallsign = icao + str(numb)
+    oneorigin = random.choices(["RKSS", "RKSI", "RKPC", "RKPK"], weights = [0.8, 0.1, 0.05, 0.05], k=1)
+    onedestination = random.choice(["RKPC", "RKPK", "RKTN", "RKJJ", "RKNY", "RKJB", "RKJY", "RKPS", "RKPU", "RKTH", "RJTT", "RJAA", "RJGG", "ZBAA", "ZSPD", "RKBB", "RJFF", "VHHH"])
+    with open("/dest.txt", "r") as file:
+        for line in file:
+            if onedestination in line:
+                print(line)
+    oneroute = line
+    oneflightrule = random.choice(["IFR", "VFR"])
+    onealtitude = random.chocie(["24000", "20000", "26000", "28000", "30000", "32000", "34000", "36000", "21000", "23000", "25000", "33000", "35000"])  
+    oneaircraftdata = random.choice(["A320", "A359", "A321", "A21N", "B738", "B789", "A20X"])
+    entry_1.insert(oneroute); entry_2.insert(onecallsign); entry_3.insert(oneorigin); entry_4.insert(oneflightrule); entry_5.insert(onedestination); entry_6.insert(onealtitude); AirCraftData = entry_10.get(oneaircraftdata)
 
+start()
 window.title("DELEVARY TRAINING")
 window.resizable(False, False)
 window.mainloop()
